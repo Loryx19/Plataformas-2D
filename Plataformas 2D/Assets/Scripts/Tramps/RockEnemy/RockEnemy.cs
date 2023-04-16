@@ -17,7 +17,13 @@ public class RockEnemy : MonoBehaviour
     [SerializeField] Transform StartPos, EndPos;
     float ElapseTime;
     bool baja = true;
-     
+
+    Animator anim;
+    private void Start()
+    {
+        anim= GetComponentInChildren<Animator>();
+    }
+
     private void Update()
     {
         if(Physics2D.Raycast(RayTransform.position, Vector3.down, RayLengh, PlayerMask))
@@ -25,6 +31,7 @@ public class RockEnemy : MonoBehaviour
             baja = true;
             if(baja)
             {
+                anim.SetBool("Go", true);
                 ObjectToMove.GetComponent<Rigidbody2D>().
               AddForce(Vector3.down * Speed, ForceMode2D.Force);
             }
@@ -34,6 +41,7 @@ public class RockEnemy : MonoBehaviour
     public IEnumerator VuelveEnemigo()
     {
         baja = false;
+        anim.SetBool("Go", false);
         yield return new WaitForSeconds(TimeToUp);
         ElapseTime = 0;
         while(ElapseTime < TimeToUp)
