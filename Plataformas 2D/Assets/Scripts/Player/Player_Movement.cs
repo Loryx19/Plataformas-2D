@@ -8,11 +8,13 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] SpriteRenderer PlayerSprite;
     [SerializeField] Animator Anim;
-    //AudioSorce
+    [SerializeField] AudioSource Audio;
+    [SerializeField] Player_Audio ListaClips;
 
     [Header("Move")]
     [SerializeField] float speed;
     float Horizontal;
+    [HideInInspector]public Vector3 inicialPoint;
 
     [Header("Jump")]
     [SerializeField] bool Jump;
@@ -29,8 +31,13 @@ public class Player_Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         PlayerSprite = GetComponent<SpriteRenderer>();  
         Anim= GetComponent<Animator>();
+        Audio = GetComponentInChildren<AudioSource>();
+        ListaClips = GetComponentInChildren<Player_Audio>();
     }
-
+    private void Start()
+    {
+        inicialPoint = transform.position;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -53,6 +60,7 @@ public class Player_Movement : MonoBehaviour
         {
             if(Jump)
             {
+                Audio.PlayOneShot(ListaClips.JumpClip);
                 rb.AddForce(new Vector2(rb.velocity.x, JumpForce), ForceMode2D.Impulse);
                 IsAir = true;
             }
@@ -64,6 +72,8 @@ public class Player_Movement : MonoBehaviour
         {         
             if (Jump)
             {
+                Audio.PlayOneShot(ListaClips.JumpClip);
+                rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(rb.velocity.x, DobleForce), ForceMode2D.Impulse);
                 IsAir = false;
             }           
@@ -85,6 +95,8 @@ public class Player_Movement : MonoBehaviour
         }
         return false;
     }
+
+    
     public void Flip()
     {
         if(Horizontal <0)
