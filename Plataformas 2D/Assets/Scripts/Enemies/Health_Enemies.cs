@@ -5,9 +5,13 @@ using UnityEngine;
 public class Health_Enemies : MonoBehaviour
 {
     [SerializeField] EnemieGoToAB Enemi;
+    [SerializeField] AudioSource audio;
     [SerializeField] int MaxVida;
     int vida;
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        audio = GetComponentInChildren<AudioSource>();
+    }
     void Start()
     {
         vida = MaxVida;
@@ -17,7 +21,8 @@ public class Health_Enemies : MonoBehaviour
         vida -= Damage;
         if (vida <= 0)
         {
-            Destroy(Enemi.gameObject);
+            audio.PlayOneShot(audio.clip);
+            Destroy(Enemi.gameObject, 0.1f);
         }
     }
 }

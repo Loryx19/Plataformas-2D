@@ -5,6 +5,6 @@ using UnityEngine;
 public class Player_Audio : MonoBehaviour
 {
     public AudioClip JumpClip;
-    //AudioClip HitClip;
+    public AudioClip HitClip;
 
 }

@@ -10,14 +10,13 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] Animator Anim;
     [SerializeField] AudioSource Audio;
     [SerializeField] Player_Audio ListaClips;
+    [SerializeField] InputsGame Inputs;
 
     [Header("Move")]
     [SerializeField] float speed;
-    float Horizontal;
     [HideInInspector]public Vector3 inicialPoint;
 
     [Header("Jump")]
-    [SerializeField] bool Jump;
     [SerializeField] float JumpForce;
     [SerializeField] Transform[] RayPositions;
     [SerializeField] LayerMask MaskGround;
@@ -33,6 +32,7 @@ public class Player_Movement : MonoBehaviour
         Anim= GetComponent<Animator>();
         Audio = GetComponentInChildren<AudioSource>();
         ListaClips = GetComponentInChildren<Player_Audio>();
+        Inputs = GetComponent<InputsGame>();
     }
     private void Start()
     {
@@ -41,24 +41,23 @@ public class Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InputPlayer();
         MovePlayer();
         JumpPlayer();
         DobleJump();
         Flip();
         Anim.SetBool("IsGrounded", IsGrounded());
-        Anim.SetBool("Jump", Jump);
+        Anim.SetBool("Jump", Inputs.Jump);
     }
     public void MovePlayer()
     {
-        rb.velocity = new Vector2(Horizontal * speed, rb.velocity.y);
-        Anim.SetFloat("Move", Horizontal);
+        rb.velocity = new Vector2(Inputs.Horizontal * speed, rb.velocity.y);
+        Anim.SetFloat("Move", Inputs.Horizontal);
     }
     public void JumpPlayer()
     {
         if(IsGrounded())
         {
-            if(Jump)
+            if(Inputs.Jump)
             {
                 Audio.PlayOneShot(ListaClips.JumpClip);
                 rb.AddForce(new Vector2(rb.velocity.x, JumpForce), ForceMode2D.Impulse);
@@ -70,7 +69,7 @@ public class Player_Movement : MonoBehaviour
     {
         if(!IsGrounded() && IsAir)
         {         
-            if (Jump)
+            if (Inputs.Jump)
             {
                 Audio.PlayOneShot(ListaClips.JumpClip);
                 rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -78,11 +77,6 @@ public class Player_Movement : MonoBehaviour
                 IsAir = false;
             }           
         }
-    }
-    void InputPlayer()
-    {
-        Horizontal = Input.GetAxisRaw("Horizontal");
-        Jump = Input.GetButtonDown("Jump");
     }
     public bool IsGrounded()
     {
@@ -99,11 +93,11 @@ public class Player_Movement : MonoBehaviour
     
     public void Flip()
     {
-        if(Horizontal <0)
+        if(Inputs.Horizontal <0)
         {
             PlayerSprite.flipX = true;
         }
-        else if  (Horizontal > 0)
+        else if (Inputs.Horizontal > 0)
         {
             PlayerSprite.flipX = false;
         }
