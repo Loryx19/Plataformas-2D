@@ -50,10 +50,11 @@ public class RockEnemy : MonoBehaviour
             yield return null;
             ObjectToMove.transform.position = Vector3.Lerp(
                 StartPos.position, EndPos.position, ElapseTime / TimeToUp);
-            if(StartPos.position== EndPos.position)
+            if(StartPos.position == EndPos.position)
             {
-                baja= false;
                 StopCoroutine(VuelveEnemigo());
+                baja = false;
+               
             }
         }
     }

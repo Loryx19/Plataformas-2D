@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class RotPlatfoms : MonoBehaviour
@@ -47,6 +45,5 @@ public class RotPlatfoms : MonoBehaviour
                 time = 0;
             }
         }
-        Debug.Log(time);
     }
 }
