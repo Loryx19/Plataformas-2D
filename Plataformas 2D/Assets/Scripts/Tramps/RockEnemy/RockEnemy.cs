@@ -24,7 +24,7 @@ public class RockEnemy : MonoBehaviour
         anim= GetComponentInChildren<Animator>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(Physics2D.Raycast(RayTransform.position, Vector3.down, RayLengh, PlayerMask))
         {
@@ -33,7 +33,7 @@ public class RockEnemy : MonoBehaviour
             {
                 anim.SetBool("Go", true);
                 ObjectToMove.GetComponent<Rigidbody2D>().
-              AddForce(Vector3.down * Speed, ForceMode2D.Force);
+              AddForce(Vector3.down * Speed, ForceMode2D.Impulse);
             }
         }
     }

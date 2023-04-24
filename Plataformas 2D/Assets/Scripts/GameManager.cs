@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     [Header("Textos")]
     [SerializeField] TextMeshProUGUI ScoreTxt;
     [SerializeField] TextMeshProUGUI VidaText;
-    int vida, score;
+    int vida;
+    [HideInInspector] public int score;
+    [SerializeField] int SceneGameOverNum;
     private void Start()
     {
         VidaPlayer = FindAnyObjectByType<Player_Header>();
@@ -31,6 +33,10 @@ public class GameManager : MonoBehaviour
     }
     public void MuerteJugador()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneGameOverNum);
+    }
+    public void CambioNivel(int scena)
+    {
+        SceneManager.LoadScene(scena);
     }
 }

@@ -10803,6 +10803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1418654362}
   - component: {fileID: 1418654363}
+  - component: {fileID: 1418654364}
   m_Layer: 0
   m_Name: Group 4
   m_TagString: Untagged
@@ -10879,6 +10880,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14.006213, y: 0.11159897}
   m_EdgeRadius: 0
+--- !u!114 &1418654364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418654361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef61263866a7a9b4ba3a60550aec7549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 1
 --- !u!4 &1418784210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 862125627452929281, guid: 6a625d0d5e4ed3b47be5ad56345af656, type: 3}
@@ -37135,6 +37149,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cf812313c1cd6c43be864569e0f7e13, type: 3}
+--- !u!1 &5629977384617370195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5629977385493272085, guid: 0cf812313c1cd6c43be864569e0f7e13, type: 3}
+  m_PrefabInstance: {fileID: 5629977384617370194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5629977384617370196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629977384617370195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d18fe13401b3694ba067c304473b3e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NivelScena: 2
+  recompensasPadre: {fileID: 340140909}
 --- !u!1001 &5882214889447965307
 PrefabInstance:
   m_ObjectHideFlags: 0

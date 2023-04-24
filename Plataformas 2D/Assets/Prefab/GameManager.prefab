@@ -47,3 +47,4 @@ MonoBehaviour:
   VidaPlayer: {fileID: 0}
   ScoreTxt: {fileID: 0}
   VidaText: {fileID: 0}
+  SceneGameOverNum: 3

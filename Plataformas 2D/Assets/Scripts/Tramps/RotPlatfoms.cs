@@ -19,7 +19,6 @@ public class RotPlatfoms : MonoBehaviour
             time += Time.deltaTime;
             if (time >= TimeToRot)
             {
-
                 ColliderBox.enabled = false;
                 for (int i = 0; i < PlatfomsList.Length; i++)
                 {

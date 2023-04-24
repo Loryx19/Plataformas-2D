@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 862125627452929283}
   Audio: {fileID: 3807145839270309747}
+  ValorScore: 1
 --- !u!95 &862125627452929283
 Animator:
   serializedVersion: 5
